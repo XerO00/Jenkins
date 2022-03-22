@@ -1,12 +1,12 @@
-def image
-
 pipeline {
     agent any
     stages {
         stage('Build') {   
             steps {
                 script {
-                    container = image('nginx').withRun('-p 9090:9090')
+                    def image = docker.image('nginx');
+                    image.pull()
+                    container = image.withRun('-p 9090:9090')
                     //container.stop()
               }
             }
