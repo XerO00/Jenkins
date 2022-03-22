@@ -6,7 +6,7 @@ pipeline {
                 script {
                     def image = docker.image('nginx');
                     image.pull()
-                    container = image.withRun('-p 9090:9090')
+                    container = image.run()
                     //container.stop()
               }
             }
